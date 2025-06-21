@@ -61,7 +61,7 @@ export default function PublicRestaurantPage() {
                  <Button size="lg" className="mt-8">{t({ id: 'Buat Reservasi', en: 'Make a Reservation' })}</Button>
             </div>
             <div className="relative h-80 rounded-lg overflow-hidden">
-                <Image src="https://placehold.co/600x400.png" data-ai-hint="fine dining restaurant" alt="Interior of The Serenity Grill" fill className="object-cover"/>
+                <Image src="https://placehold.co/600x400.png" data-ai-hint="restaurant interior" alt="Interior of The Serenity Grill" fill className="object-cover"/>
             </div>
         </div>
 
