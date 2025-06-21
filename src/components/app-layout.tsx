@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import {
+  BedDouble,
   FileText,
   LayoutDashboard,
   LogOut,
@@ -11,7 +12,9 @@ import {
   PanelLeft,
   Settings,
   Sparkles,
+  Palmtree,
   Users,
+  Utensils,
 } from 'lucide-react';
 
 import { useAuth } from '@/hooks/use-auth';
@@ -40,6 +43,9 @@ import {
 
 const navItems = [
   { href: '/', label: 'Dashboard', icon: LayoutDashboard },
+  { href: '/rooms', label: 'Room Management', icon: BedDouble },
+  { href: '/resort', label: 'Resort Amenities', icon: Palmtree },
+  { href: '/restaurant', label: 'Restaurant', icon: Utensils },
   { href: '/users', label: 'User Management', icon: Users },
   { href: '/welcome-message', label: 'Welcome AI', icon: Sparkles },
   { href: '/reports', label: 'Reports', icon: FileText },
