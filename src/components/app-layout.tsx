@@ -7,6 +7,7 @@ import {
   BedDouble,
   Boxes,
   FileText,
+  Globe,
   LayoutDashboard,
   LogOut,
   MoreVertical,
@@ -53,6 +54,7 @@ const navItems = [
   { href: '/users', label: 'User Management', icon: Users },
   { href: '/welcome-message', label: 'Welcome AI', icon: Sparkles },
   { href: '/reports', label: 'Reports', icon: FileText },
+  { href: '/integrations', label: 'Integrations', icon: Globe },
 ];
 
 export function AppLayout({ children }: { children: React.ReactNode }) {
