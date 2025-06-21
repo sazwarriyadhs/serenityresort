@@ -73,7 +73,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
       <div className="flex h-screen w-full items-center justify-center bg-background">
         <div className="flex flex-col items-center gap-4">
           <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="animate-spin text-primary"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
-          <p className="text-muted-foreground">Loading Elegencia...</p>
+          <p className="text-muted-foreground">Loading Serenity...</p>
         </div>
       </div>
     );
@@ -83,24 +83,22 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
     <SidebarProvider>
       <Sidebar>
         <SidebarHeader>
-            <div className="flex items-center gap-2">
-                 <svg
+            <div className="flex items-center justify-center gap-2 p-2">
+                <svg
+                    viewBox="0 0 100 65"
                     xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 200 50"
-                    className="h-10 w-auto text-primary"
+                    className="h-8 w-auto text-primary"
                     fill="currentColor"
-                  >
-                    <text
-                      x="50%"
-                      y="50%"
-                      dy=".35em"
-                      textAnchor="middle"
-                      className="font-headline"
-                      fontSize="38"
-                    >
-                      Elegencia
-                    </text>
-                  </svg>
+                >
+                    <g>
+                        <path d="M50 5C60 25 65 30 50 45C35 30 40 25 50 5Z" />
+                        <path d="M50 45C75 35 85 30 85 10C85 30 75 40 50 45Z" />
+                        <path d="M50 45C25 35 15 30 15 10C15 30 25 40 50 45Z" />
+                    </g>
+                    <path d="M25 50 C 40 45, 60 45, 75 50" stroke="currentColor" strokeWidth="3" fill="none" strokeLinecap="round"/>
+                    <path d="M20 58 C 40 53, 60 53, 80 58" stroke="currentColor" strokeWidth="3" fill="none" strokeLinecap="round"/>
+                </svg>
+                <span className="font-headline text-2xl font-bold text-primary group-data-[collapsible=icon]:hidden">Serenity</span>
             </div>
         </SidebarHeader>
         <SidebarContent>

@@ -5,8 +5,8 @@ import { AppShell } from '@/components/app-shell';
 import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
-  title: 'Elegencia',
-  description: 'Royale Restaurant, Hotel & Resort Management System',
+  title: 'Serenity',
+  description: 'Hotel, Resort and Restaurant Management System',
 };
 
 export default function RootLayout({

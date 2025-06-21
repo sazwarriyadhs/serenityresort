@@ -1,6 +1,6 @@
-# Elegencia
+# Serenity
 
-Elegencia is a modern, comprehensive management system for hotels, resorts, and restaurants, built with Next.js, and leveraging AI for an enhanced guest experience. The visual identity is inspired by luxury and elegance, featuring a dark theme with gold accents.
+Serenity is a modern, comprehensive management system for hotels, resorts, and restaurants, built with Next.js, and leveraging AI for an enhanced guest experience. The visual identity is inspired by luxury and elegance, featuring a dark theme with gold accents.
 
 ## Core Features
 

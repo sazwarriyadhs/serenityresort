@@ -48,28 +48,24 @@ export default function LoginPage() {
     <div className="flex min-h-screen items-center justify-center bg-background p-4">
       <Card className="w-full max-w-md shadow-2xl border-primary/20">
         <CardHeader className="text-center">
-            <div className="flex justify-center items-center mb-4">
-                 <div className="p-2 rounded-lg bg-transparent">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 200 50"
-                      className="h-12 w-auto text-primary"
-                      fill="currentColor"
-                    >
-                      <text
-                        x="50%"
-                        y="50%"
-                        dy=".35em"
-                        textAnchor="middle"
-                        className="font-headline"
-                        fontSize="38"
-                      >
-                        Elegencia
-                      </text>
-                    </svg>
-                </div>
+            <div className="flex flex-col items-center text-center mb-4">
+                <svg
+                    viewBox="0 0 100 65"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-16 w-auto text-primary mb-4"
+                    fill="currentColor"
+                >
+                    <g>
+                        <path d="M50 5C60 25 65 30 50 45C35 30 40 25 50 5Z" />
+                        <path d="M50 45C75 35 85 30 85 10C85 30 75 40 50 45Z" />
+                        <path d="M50 45C25 35 15 30 15 10C15 30 25 40 50 45Z" />
+                    </g>
+                    <path d="M25 50 C 40 45, 60 45, 75 50" stroke="currentColor" strokeWidth="3" fill="none" strokeLinecap="round"/>
+                    <path d="M20 58 C 40 53, 60 53, 80 58" stroke="currentColor" strokeWidth="3" fill="none" strokeLinecap="round"/>
+                </svg>
+                <CardTitle className="text-5xl font-headline tracking-wider">SERENITY</CardTitle>
+                <CardDescription className="text-xs tracking-widest font-medium text-muted-foreground mt-2">HOTEL, RESORT AND RESTAURANT MANAGEMENT SYSTEM</CardDescription>
             </div>
-          <CardTitle className="text-3xl font-headline">Royale Restaurant, Hotel & Resort</CardTitle>
           <CardDescription>Enter your credentials to access the management dashboard.</CardDescription>
         </CardHeader>
         <CardContent>
@@ -82,7 +78,7 @@ export default function LoginPage() {
                   <FormItem>
                     <FormLabel>Email</FormLabel>
                     <FormControl>
-                      <Input placeholder="manager@elegencia.com" {...field} />
+                      <Input placeholder="manager@serenity.com" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -109,7 +105,7 @@ export default function LoginPage() {
         </CardContent>
         <CardFooter>
             <p className="text-center text-xs text-muted-foreground w-full">
-                © {new Date().getFullYear()} Elegencia. All rights reserved.
+                © {new Date().getFullYear()} Serenity. All rights reserved.
             </p>
         </CardFooter>
       </Card>
