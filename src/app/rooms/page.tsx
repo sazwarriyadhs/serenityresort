@@ -12,7 +12,7 @@ const roomTypes = [
     description: { id: 'Kamar luas dengan tempat tidur ukuran queen, cocok untuk pasangan atau pelancong solo yang mencari kenyamanan dan gaya.', en: 'A spacious room with a queen-sized bed, perfect for couples or solo travelers seeking comfort and style.' },
     price: 150,
     imageUrl: 'https://placehold.co/600x400.png',
-    dataAiHint: 'hotel room modern',
+    dataAiHint: 'deluxe room',
     features: [
       { icon: Users, text: { id: '2 Tamu', en: '2 Guests' } },
       { icon: Wifi, text: { id: 'Wi-Fi Gratis', en: 'Free Wi-Fi' } },
@@ -25,7 +25,7 @@ const roomTypes = [
     description: { id: 'Rasakan kemewahan di suite kami yang dilengkapi dengan ruang tamu terpisah, tempat tidur king, dan pemandangan laut yang indah.', en: 'Experience luxury in our suite featuring a separate living area, a king-sized bed, and panoramic ocean views.' },
     price: 400,
     imageUrl: 'https://placehold.co/600x400.png',
-    dataAiHint: 'luxury hotel suite',
+    dataAiHint: 'luxury suite',
     features: [
       { icon: Users, text: { id: '3 Tamu', en: '3 Guests' } },
       { icon: Wifi, text: { id: 'Wi-Fi Gratis', en: 'Free Wi-Fi' } },
@@ -38,7 +38,7 @@ const roomTypes = [
     description: { id: 'Ideal untuk keluarga, bungalow ini menawarkan dua kamar tidur dan teras taman pribadi untuk masa inap yang santai.', en: 'Ideal for families, this bungalow offers two bedrooms and a private garden terrace for a relaxing stay.' },
     price: 320,
     imageUrl: 'https://placehold.co/600x400.png',
-    dataAiHint: 'hotel bungalow garden',
+    dataAiHint: 'garden bungalow',
     features: [
       { icon: Users, text: { id: '4 Tamu', en: '4 Guests' } },
       { icon: Wifi, text: { id: 'Wi-Fi Gratis', en: 'Free Wi-Fi' } },
@@ -51,7 +51,7 @@ const roomTypes = [
     description: { id: 'Kamar yang nyaman dengan dua tempat tidur double, dilengkapi dengan semua fasilitas penting untuk masa inap yang menyenangkan.', en: 'A cozy and comfortable room with two double beds, equipped with all the essential amenities for a pleasant stay.' },
     price: 220,
     imageUrl: 'https://placehold.co/600x400.png',
-    dataAiHint: 'hotel room cozy',
+    dataAiHint: 'hotel room',
     features: [
       { icon: Users, text: { id: '4 Tamu', en: '4 Guests' } },
       { icon: Wifi, text: { id: 'Wi-Fi Gratis', en: 'Free Wi-Fi' } },
