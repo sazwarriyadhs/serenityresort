@@ -19,7 +19,7 @@ const amenities = [
     description: 'State-of-the-art gym equipment.',
     status: 'Open',
     icon: Dumbbell,
-    image: '__media_url_0__',
+    image: 'https://placehold.co/600x400.png',
     dataAiHint: 'fitness center',
   },
   {
