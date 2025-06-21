@@ -14,6 +14,7 @@ import {
   Sparkles,
   Palmtree,
   Users,
+  UsersRound,
   Utensils,
 } from 'lucide-react';
 
@@ -46,6 +47,7 @@ const navItems = [
   { href: '/rooms', label: 'Room Management', icon: BedDouble },
   { href: '/resort', label: 'Resort Amenities', icon: Palmtree },
   { href: '/restaurant', label: 'Restaurant', icon: Utensils },
+  { href: '/customers', label: 'Customers', icon: UsersRound },
   { href: '/users', label: 'User Management', icon: Users },
   { href: '/welcome-message', label: 'Welcome AI', icon: Sparkles },
   { href: '/reports', label: 'Reports', icon: FileText },
