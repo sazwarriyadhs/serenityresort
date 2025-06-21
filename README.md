@@ -1,6 +1,6 @@
-# Serenity Manager
+# Elegencia
 
-Serenity Manager is a modern, comprehensive management system for hotels, resorts, and restaurants, built with Next.js, and leveraging AI for an enhanced guest experience.
+Elegencia is a modern, comprehensive management system for hotels, resorts, and restaurants, built with Next.js, and leveraging AI for an enhanced guest experience. The visual identity is inspired by luxury and elegance, featuring a dark theme with gold accents.
 
 ## Core Features
 
@@ -9,6 +9,7 @@ Serenity Manager is a modern, comprehensive management system for hotels, resort
 -   **Welcome Message Generator**: An AI-powered tool to generate personalized welcome messages for guests based on their preferences and past stays.
 -   **Reporting**: Generate simple reports on essential activities and download them in CSV format.
 -   **User Authentication**: A secure, front-end user authentication system.
+-   **Room, Resort, Restaurant, Customer, and Inventory Management**
 
 ## Tech Stack
 

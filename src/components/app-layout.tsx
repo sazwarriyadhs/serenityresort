@@ -71,7 +71,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
       <div className="flex h-screen w-full items-center justify-center bg-background">
         <div className="flex flex-col items-center gap-4">
           <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="animate-spin text-primary"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
-          <p className="text-muted-foreground">Loading Serenity...</p>
+          <p className="text-muted-foreground">Loading Elegencia...</p>
         </div>
       </div>
     );
@@ -82,10 +82,23 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
       <Sidebar>
         <SidebarHeader>
             <div className="flex items-center gap-2">
-                <div className="p-1.5 rounded-lg bg-primary/20">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" className="h-7 w-7 text-primary"><rect width="256" height="256" fill="none"/><path d="M128,24a104,104,0,0,0,0,208c57.4,0,96.35-30,103.65-83.21a8,8,0,0,0-15.84-2.38C210.3,184.32,174,216,128,216A88,88,0,0,1,128,40a87.41,87.41,0,0,1,59.18,22.54,8,8,0,0,0,11.31-11.32A103.22,103.22,0,0,0,128,24Z"/></svg>
-                </div>
-                <h2 className="text-xl font-bold font-headline text-foreground">Serenity</h2>
+                 <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 200 50"
+                    className="h-10 w-auto text-primary"
+                    fill="currentColor"
+                  >
+                    <text
+                      x="50%"
+                      y="50%"
+                      dy=".35em"
+                      textAnchor="middle"
+                      className="font-headline"
+                      fontSize="38"
+                    >
+                      Elegencia
+                    </text>
+                  </svg>
             </div>
         </SidebarHeader>
         <SidebarContent>

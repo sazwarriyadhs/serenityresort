@@ -25,13 +25,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     try {
-      const storedUser = localStorage.getItem('serenity-user');
+      const storedUser = localStorage.getItem('elegencia-user');
       if (storedUser) {
         setUser(JSON.parse(storedUser));
       }
     } catch (error) {
       console.error('Failed to parse user from localStorage', error);
-      localStorage.removeItem('serenity-user');
+      localStorage.removeItem('elegencia-user');
     } finally {
       setLoading(false);
     }
@@ -46,7 +46,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         email: credentials.email,
         role: 'Administrator', // Default role for demo
       };
-      localStorage.setItem('serenity-user', JSON.stringify(mockUser));
+      localStorage.setItem('elegencia-user', JSON.stringify(mockUser));
       setUser(mockUser);
       router.push('/');
     },
@@ -54,7 +54,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   );
 
   const logout = useCallback(() => {
-    localStorage.removeItem('serenity-user');
+    localStorage.removeItem('elegencia-user');
     setUser(null);
     router.push('/login');
   }, [router]);

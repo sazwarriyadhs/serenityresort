@@ -46,16 +46,31 @@ export default function LoginPage() {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background p-4">
-       <div className="absolute inset-0 -z-10 h-full w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] dark:bg-[radial-gradient(#4b5563_1px,transparent_1px)]"></div>
-      <Card className="w-full max-w-md shadow-2xl">
+      <Card className="w-full max-w-md shadow-2xl border-primary/20">
         <CardHeader className="text-center">
             <div className="flex justify-center items-center mb-4">
-                 <div className="p-2 rounded-lg bg-primary/20">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" className="h-10 w-10 text-primary"><rect width="256" height="256" fill="none"/><path d="M128,24a104,104,0,0,0,0,208c57.4,0,96.35-30,103.65-83.21a8,8,0,0,0-15.84-2.38C210.3,184.32,174,216,128,216A88,88,0,0,1,128,40a87.41,87.41,0,0,1,59.18,22.54,8,8,0,0,0,11.31-11.32A103.22,103.22,0,0,0,128,24Z"/></svg>
+                 <div className="p-2 rounded-lg bg-transparent">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 200 50"
+                      className="h-12 w-auto text-primary"
+                      fill="currentColor"
+                    >
+                      <text
+                        x="50%"
+                        y="50%"
+                        dy=".35em"
+                        textAnchor="middle"
+                        className="font-headline"
+                        fontSize="38"
+                      >
+                        Elegencia
+                      </text>
+                    </svg>
                 </div>
             </div>
-          <CardTitle className="text-3xl font-headline">Welcome to Serenity</CardTitle>
-          <CardDescription>Enter your credentials to access your dashboard.</CardDescription>
+          <CardTitle className="text-3xl font-headline">Royale Restaurant, Hotel & Resort</CardTitle>
+          <CardDescription>Enter your credentials to access the management dashboard.</CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -67,7 +82,7 @@ export default function LoginPage() {
                   <FormItem>
                     <FormLabel>Email</FormLabel>
                     <FormControl>
-                      <Input placeholder="manager@serenity.com" {...field} />
+                      <Input placeholder="manager@elegencia.com" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -94,7 +109,7 @@ export default function LoginPage() {
         </CardContent>
         <CardFooter>
             <p className="text-center text-xs text-muted-foreground w-full">
-                © {new Date().getFullYear()} Serenity Manager. All rights reserved.
+                © {new Date().getFullYear()} Elegencia. All rights reserved.
             </p>
         </CardFooter>
       </Card>

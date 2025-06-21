@@ -5,8 +5,8 @@ import { AppShell } from '@/components/app-shell';
 import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
-  title: 'Serenity Manager',
-  description: 'Hotel, Resort, and Restaurant Management System',
+  title: 'Elegencia',
+  description: 'Royale Restaurant, Hotel & Resort Management System',
 };
 
 export default function RootLayout({
@@ -15,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="dark">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
