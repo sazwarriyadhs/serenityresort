@@ -11,7 +11,7 @@ const amenities = [
     description: 'Olympic-sized pool with a kids area.',
     status: 'Open',
     icon: Waves,
-    image: '__media_url_0__',
+    image: 'https://placehold.co/600x400.png',
     dataAiHint: 'resort pool',
   },
   {
