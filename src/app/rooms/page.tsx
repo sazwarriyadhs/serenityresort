@@ -1,89 +1,106 @@
 'use client';
-
-import { useState } from 'react';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { BedDouble, PlusCircle } from 'lucide-react';
+import { Users, Wifi, Tv, Wind } from 'lucide-react';
 
-type Room = {
-  id: string;
-  roomNumber: string;
-  type: 'Single' | 'Double' | 'Suite';
-  status: 'Available' | 'Occupied' | 'Cleaning' | 'Maintenance';
-  price: number;
-};
-
-const initialRooms: Room[] = [
-  { id: 'R101', roomNumber: '101', type: 'Single', status: 'Available', price: 150 },
-  { id: 'R102', roomNumber: '102', type: 'Double', status: 'Occupied', price: 220 },
-  { id: 'R201', roomNumber: '201', type: 'Suite', status: 'Available', price: 400 },
-  { id: 'R202', roomNumber: '202', type: 'Double', status: 'Cleaning', price: 220 },
-  { id: 'R301', roomNumber: '301', type: 'Single', status: 'Maintenance', price: 150 },
+const roomTypes = [
+  {
+    name: 'Deluxe Queen Room',
+    description: 'A spacious room with a queen-sized bed, perfect for couples or solo travelers seeking comfort and style.',
+    price: 150,
+    imageUrl: 'https://placehold.co/600x400.png',
+    dataAiHint: 'hotel room modern',
+    features: [
+      { icon: Users, text: '2 Guests' },
+      { icon: Wifi, text: 'Free Wi-Fi' },
+      { icon: Tv, text: '4K TV' },
+      { icon: Wind, text: 'Air-conditioned' },
+    ],
+  },
+  {
+    name: 'Executive King Suite',
+    description: 'Experience luxury in our suite featuring a separate living area, a king-sized bed, and panoramic ocean views.',
+    price: 400,
+    imageUrl: 'https://placehold.co/600x400.png',
+    dataAiHint: 'luxury hotel suite',
+    features: [
+      { icon: Users, text: '3 Guests' },
+      { icon: Wifi, text: 'Free Wi-Fi' },
+      { icon: Tv, text: '55" 4K TV' },
+      { icon: Wind, text: 'Air-conditioned' },
+    ],
+  },
+  {
+    name: 'Family Garden Bungalow',
+    description: 'Ideal for families, this bungalow offers two bedrooms and a private garden terrace for a relaxing stay.',
+    price: 320,
+    imageUrl: 'https://placehold.co/600x400.png',
+    dataAiHint: 'hotel bungalow garden',
+    features: [
+      { icon: Users, text: '4 Guests' },
+      { icon: Wifi, text: 'Free Wi-Fi' },
+      { icon: Tv, text: '2x 4K TV' },
+      { icon: Wind, text: 'Air-conditioned' },
+    ],
+  },
+   {
+    name: 'Standard Double Room',
+    description: 'A cozy and comfortable room with two double beds, equipped with all the essential amenities for a pleasant stay.',
+    price: 220,
+    imageUrl: 'https://placehold.co/600x400.png',
+    dataAiHint: 'hotel room cozy',
+    features: [
+      { icon: Users, text: '4 Guests' },
+      { icon: Wifi, text: 'Free Wi-Fi' },
+      { icon: Tv, text: '4K TV' },
+      { icon: Wind, text: 'Air-conditioned' },
+    ],
+  },
 ];
 
-export default function RoomManagementPage() {
-  const [rooms, setRooms] = useState<Room[]>(initialRooms);
-
-  const getStatusVariant = (status: Room['status']) => {
-    switch (status) {
-      case 'Available':
-        return 'default';
-      case 'Occupied':
-        return 'destructive';
-      case 'Cleaning':
-        return 'secondary';
-      case 'Maintenance':
-        return 'outline';
-      default:
-        return 'default';
-    }
-  };
-
-  return (
-    <div className="flex flex-col gap-8">
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold font-headline text-foreground">Room Management</h1>
-          <p className="text-muted-foreground">Oversee all hotel rooms and their statuses.</p>
+export default function PublicRoomsPage() {
+    return (
+        <div className="container py-16">
+            <div className="text-center mb-16">
+                <h1 className="text-4xl md:text-5xl font-bold font-headline text-primary">Our Rooms & Suites</h1>
+                <p className="text-muted-foreground text-lg mt-4 max-w-2xl mx-auto">Designed for comfort, styled with elegance. Find the perfect space for your getaway.</p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+                {roomTypes.map((room) => (
+                    <Card key={room.name} className="overflow-hidden flex flex-col group">
+                       <div className="relative h-64 w-full overflow-hidden">
+                          <Image 
+                            src={room.imageUrl} 
+                            alt={room.name} 
+                            data-ai-hint={room.dataAiHint}
+                            fill
+                            className="object-cover transition-transform duration-300 group-hover:scale-105" 
+                          />
+                        </div>
+                        <CardHeader className="flex-grow">
+                            <div className="flex justify-between items-start">
+                                <CardTitle className="font-headline text-2xl">{room.name}</CardTitle>
+                                <Badge variant="secondary" className="text-lg whitespace-nowrap">${room.price}/night</Badge>
+                            </div>
+                           <CardDescription className="pt-2">{room.description}</CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                           <div className="grid grid-cols-2 gap-4 text-muted-foreground mb-6">
+                               {room.features.map(feature => (
+                                   <div key={feature.text} className="flex items-center gap-2">
+                                       <feature.icon className="h-5 w-5 text-primary" />
+                                       <span>{feature.text}</span>
+                                   </div>
+                               ))}
+                           </div>
+                           <Button className="w-full">Book Now</Button>
+                        </CardContent>
+                    </Card>
+                ))}
+            </div>
         </div>
-        <Button>
-          <PlusCircle className="mr-2" />
-          Add New Room
-        </Button>
-      </div>
-
-      <Card>
-        <CardHeader>
-          <CardTitle className="font-headline">Room Roster</CardTitle>
-          <CardDescription>A complete list of all rooms in the hotel.</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Room Number</TableHead>
-                <TableHead>Type</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead className="text-right">Price/Night</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {rooms.map((room) => (
-                <TableRow key={room.id}>
-                  <TableCell className="font-medium flex items-center gap-2"><BedDouble className="h-4 w-4 text-muted-foreground" /> {room.roomNumber}</TableCell>
-                  <TableCell>{room.type}</TableCell>
-                  <TableCell>
-                    <Badge variant={getStatusVariant(room.status)}>{room.status}</Badge>
-                  </TableCell>
-                  <TableCell className="text-right">${room.price.toFixed(2)}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </CardContent>
-      </Card>
-    </div>
-  );
+    );
 }

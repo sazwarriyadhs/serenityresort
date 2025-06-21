@@ -3,83 +3,73 @@ import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Palmtree, Sprout, Dumbbell, Waves } from 'lucide-react';
+import { Palmtree, Sprout, Dumbbell, Waves, Sun } from 'lucide-react';
 
 const amenities = [
   {
-    name: 'Swimming Pool',
-    description: 'Olympic-sized pool with a kids area.',
-    status: 'Open',
+    name: 'Infinity Pool',
+    description: 'Relax and unwind in our stunning infinity pool with panoramic ocean views. Open daily from 7 AM to 9 PM.',
     icon: Waves,
     image: 'https://placehold.co/600x400.png',
-    dataAiHint: 'swimming pool resort',
+    dataAiHint: 'resort infinity pool',
   },
   {
     name: 'Fitness Center',
-    description: 'State-of-the-art gym equipment.',
-    status: 'Open',
+    description: 'Stay active with our state-of-the-art gym, featuring cardio machines, free weights, and yoga mats.',
     icon: Dumbbell,
     image: 'https://placehold.co/600x400.png',
-    dataAiHint: 'fitness center gym',
+    dataAiHint: 'fitness center hotel',
   },
   {
     name: 'Serenity Spa',
-    description: 'Full-service spa with massages and treatments.',
-    status: 'Open',
+    description: 'Indulge in a range of treatments from massages to facials at our tranquil spa. Advance booking recommended.',
     icon: Sprout,
     image: 'https://placehold.co/600x400.png',
-    dataAiHint: 'spa massage',
+    dataAiHint: 'luxury spa interior',
   },
   {
-    name: 'Beachfront Access',
-    description: 'Private beach access for all guests.',
-    status: 'Maintenance',
+    name: 'Private Beach Access',
+    description: 'Enjoy exclusive access to our pristine private beach, complete with sun loungers and towel service.',
     icon: Palmtree,
     image: 'https://placehold.co/600x400.png',
-    dataAiHint: 'resort beachfront',
+    dataAiHint: 'private beach resort',
   },
 ];
 
-export default function ResortManagementPage() {
-  const getStatusVariant = (status: string) => {
-    return status === 'Open' ? 'default' : 'secondary';
-  };
-
+export default function PublicResortPage() {
   return (
-    <div className="flex flex-col gap-8">
-      <div>
-        <h1 className="text-3xl font-bold font-headline text-foreground">Resort Amenities</h1>
-        <p className="text-muted-foreground">Manage and monitor resort facilities and activities.</p>
-      </div>
+    <div className="container py-16">
+        <div className="text-center mb-16">
+            <h1 className="text-4xl md:text-5xl font-bold font-headline text-primary">Resort Amenities</h1>
+            <p className="text-muted-foreground text-lg mt-4 max-w-2xl mx-auto">Enhance your stay with our world-class facilities and services.</p>
+        </div>
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
-        {amenities.map((amenity) => (
-          <Card key={amenity.name} className="overflow-hidden flex flex-col">
-             <div className="relative h-48 w-full">
-              <Image 
-                src={amenity.image} 
-                alt={amenity.name} 
-                data-ai-hint={amenity.dataAiHint}
-                fill
-                className="object-cover" 
-              />
-            </div>
-            <CardHeader className="flex-grow">
-               <div className="flex justify-between items-start">
-                  <CardTitle className="flex items-center gap-2 font-headline">
-                    <amenity.icon className="h-6 w-6" />
-                    {amenity.name}
-                  </CardTitle>
-                   <Badge variant={getStatusVariant(amenity.status)}>{amenity.status}</Badge>
-               </div>
-              <CardDescription>{amenity.description}</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Button variant="outline" className="w-full">Manage Amenity</Button>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+        <div className="grid gap-8 md:grid-cols-2">
+            {amenities.map((amenity) => (
+            <Card key={amenity.name} className="overflow-hidden group flex flex-col sm:flex-row">
+                <div className="relative sm:w-1/3 h-48 sm:h-auto shrink-0">
+                    <Image 
+                        src={amenity.image} 
+                        alt={amenity.name} 
+                        data-ai-hint={amenity.dataAiHint}
+                        fill
+                        className="object-cover" 
+                    />
+                </div>
+                <div className="flex flex-col flex-grow">
+                    <CardHeader>
+                        <CardTitle className="flex items-center gap-3 font-headline text-2xl">
+                            <amenity.icon className="h-8 w-8 text-primary" />
+                            {amenity.name}
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent className="flex-grow">
+                        <CardDescription>{amenity.description}</CardDescription>
+                    </CardContent>
+                </div>
+            </Card>
+            ))}
+        </div>
     </div>
   );
 }

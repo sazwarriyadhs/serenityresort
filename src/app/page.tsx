@@ -1,134 +1,116 @@
 'use client';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
-import { Bar, BarChart, CartesianGrid, Line, LineChart, XAxis, YAxis } from 'recharts';
-import { CalendarCheck, Hotel, Smile, TrendingUp, UsersRound } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { BedDouble, Utensils, Sprout, Star } from 'lucide-react';
 
-const salesData = [
-  { month: 'Jan', sales: 4000 },
-  { month: 'Feb', sales: 3000 },
-  { month: 'Mar', sales: 5000 },
-  { month: 'Apr', sales: 4500 },
-  { month: 'May', sales: 6000 },
-  { month: 'Jun', sales: 8000 },
-];
-
-const occupancyData = [
-  { day: 'Mon', rate: 75 },
-  { day: 'Tue', rate: 82 },
-  { day: 'Wed', rate: 80 },
-  { day: 'Thu', rate: 88 },
-  { day: 'Fri', rate: 95 },
-  { day: 'Sat', rate: 98 },
-  { day: 'Sun', rate: 92 },
-];
-
-const chartConfig = {
-  sales: {
-    label: 'Sales',
-    color: 'hsl(var(--primary))',
-  },
-  rate: {
-    label: 'Occupancy Rate',
-    color: 'hsl(var(--accent))',
-  },
-};
-
-export default function DashboardPage() {
+export default function HomePage() {
   return (
-    <div className="flex flex-col gap-8">
-      <h1 className="text-3xl font-bold font-headline text-foreground">Dashboard</h1>
+    <div className="flex flex-col">
+      {/* Hero Section */}
+      <section className="relative h-[70vh] min-h-[500px] w-full flex items-center justify-center text-center text-white">
+        <Image
+          src="https://placehold.co/1920x1080.png"
+          alt="Luxury resort view with a pool at sunset"
+          data-ai-hint="luxury resort sunset"
+          fill
+          priority
+          className="object-cover -z-10"
+        />
+        <div className="absolute inset-0 bg-black/50 -z-10" />
+        <div className="container z-10">
+          <h1 className="text-5xl md:text-7xl font-headline font-bold">Experience Tranquility</h1>
+          <p className="mt-4 text-lg md:text-xl max-w-2xl mx-auto">Find your sanctuary at Serenity, where luxury meets peace.</p>
+          <Button size="lg" className="mt-8" asChild>
+            <Link href="/rooms">Explore Our Rooms</Link>
+          </Button>
+        </div>
+      </section>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Occupancy Rate</CardTitle>
-            <Hotel className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold font-headline">85.3%</div>
-            <p className="text-xs text-muted-foreground">+2.1% from last month</p>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Guest Satisfaction</CardTitle>
-            <Smile className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold font-headline">9.2/10</div>
-            <p className="text-xs text-muted-foreground">+0.5 from last quarter</p>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Daily Sales (Restaurant)</CardTitle>
-            <TrendingUp className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold font-headline">$12,480</div>
-            <p className="text-xs text-muted-foreground">+12% from yesterday</p>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Upcoming Bookings (7 days)</CardTitle>
-            <CalendarCheck className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold font-headline">124</div>
-            <p className="text-xs text-muted-foreground">32 arrivals today</p>
-          </CardContent>
-        </Card>
-      </div>
+      {/* About Section */}
+      <section className="py-24 bg-card">
+        <div className="container text-center">
+            <h2 className="text-4xl font-headline text-primary">A Haven of Peace and Luxury</h2>
+            <p className="mt-4 max-w-3xl mx-auto text-muted-foreground">
+                Nestled in a secluded paradise, Serenity offers an unparalleled experience of comfort and elegance. Our commitment is to provide a memorable stay, blending world-class hospitality with the natural beauty of our surroundings.
+            </p>
+        </div>
+      </section>
 
-      <div className="grid gap-4 md:grid-cols-2">
-        <Card>
-          <CardHeader>
-            <CardTitle className="font-headline">Sales Trends (6 Months)</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ChartContainer config={chartConfig} className="h-[250px] w-full">
-              <LineChart data={salesData} margin={{ top: 5, right: 20, left: -10, bottom: 5 }}>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                <XAxis dataKey="month" tickLine={false} axisLine={false} tickMargin={8} />
-                <YAxis tickLine={false} axisLine={false} tickMargin={8} tickFormatter={(value) => `$${value/1000}k`} />
-                <ChartTooltip
-                  cursor={false}
-                  content={<ChartTooltipContent indicator="line" />}
-                />
-                <Line
-                  dataKey="sales"
-                  type="monotone"
-                  stroke="var(--color-sales)"
-                  strokeWidth={2}
-                  dot={{ fill: 'var(--color-sales)', r: 4 }}
-                  activeDot={{ r: 6 }}
-                />
-              </LineChart>
-            </ChartContainer>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle className="font-headline">Weekly Occupancy Rate</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ChartContainer config={chartConfig} className="h-[250px] w-full">
-              <BarChart data={occupancyData} margin={{ top: 5, right: 20, left: -10, bottom: 5 }}>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                <XAxis dataKey="day" tickLine={false} axisLine={false} tickMargin={8} />
-                <YAxis tickLine={false} axisLine={false} tickMargin={8} unit="%" />
-                <ChartTooltip
-                  cursor={false}
-                  content={<ChartTooltipContent indicator="dot" />}
-                />
-                <Bar dataKey="rate" fill="var(--color-rate)" radius={4} />
-              </BarChart>
-            </ChartContainer>
-          </CardContent>
-        </Card>
-      </div>
+      {/* Features Section */}
+      <section className="py-24">
+        <div className="container">
+            <div className="grid md:grid-cols-3 gap-8 text-center">
+                <Card className="hover:shadow-lg transition-shadow">
+                    <CardHeader>
+                        <BedDouble className="h-12 w-12 mx-auto text-primary"/>
+                        <CardTitle className="font-headline mt-4">Exquisite Rooms</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <p className="text-muted-foreground">Elegantly designed rooms and suites with breathtaking views, ensuring a restful and rejuvenating stay.</p>
+                        <Button variant="link" asChild className="mt-4"><Link href="/rooms">View Rooms →</Link></Button>
+                    </CardContent>
+                </Card>
+                 <Card className="hover:shadow-lg transition-shadow">
+                    <CardHeader>
+                        <Utensils className="h-12 w-12 mx-auto text-primary"/>
+                        <CardTitle className="font-headline mt-4">Gourmet Dining</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                         <p className="text-muted-foreground">Savor culinary masterpieces at our signature restaurant, featuring fresh, locally-sourced ingredients.</p>
+                        <Button variant="link" asChild className="mt-4"><Link href="/restaurant">Explore Menu →</Link></Button>
+                    </CardContent>
+                </Card>
+                 <Card className="hover:shadow-lg transition-shadow">
+                    <CardHeader>
+                        <Sprout className="h-12 w-12 mx-auto text-primary"/>
+                        <CardTitle className="font-headline mt-4">World-Class Amenities</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <p className="text-muted-foreground">Indulge in our spa, stay active at the fitness center, or relax by our pristine, private beach.</p>
+                        <Button variant="link" asChild className="mt-4"><Link href="/resort">Discover More →</Link></Button>
+                    </CardContent>
+                </Card>
+            </div>
+        </div>
+      </section>
+
+       {/* Testimonials Section */}
+      <section className="py-24 bg-card">
+        <div className="container">
+          <h2 className="text-4xl font-headline text-center text-primary mb-12">What Our Guests Say</h2>
+          <div className="grid lg:grid-cols-3 gap-8">
+            <Card>
+              <CardContent className="pt-6">
+                <div className="flex mb-2">
+                    {[...Array(5)].map((_,i) => <Star key={i} className="text-primary fill-primary"/>)}
+                </div>
+                <blockquote className="italic text-foreground">"An unforgettable escape! The attention to detail and the staff's warmth made our stay perfect. We're already planning our return."</blockquote>
+                <p className="font-semibold mt-4">— The Johnson Family</p>
+              </CardContent>
+            </Card>
+            <Card>
+               <CardContent className="pt-6">
+                <div className="flex mb-2">
+                    {[...Array(5)].map((_,i) => <Star key={i} className="text-primary fill-primary"/>)}
+                </div>
+                <blockquote className="italic text-foreground">"The restaurant is a culinary gem. Every meal was a delight. Truly a five-star dining experience with a view to match."</blockquote>
+                <p className="font-semibold mt-4">— Michael Chen</p>
+              </CardContent>
+            </Card>
+            <Card>
+               <CardContent className="pt-6">
+                <div className="flex mb-2">
+                    {[...Array(5)].map((_,i) => <Star key={i} className="text-primary fill-primary"/>)}
+                </div>
+                <blockquote className="italic text-foreground">"I've never felt so relaxed. The spa is world-class, and the beachfront is pristine. Serenity is the perfect name for this place."</blockquote>
+                <p className="font-semibold mt-4">— Dr. Emily Carter</p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

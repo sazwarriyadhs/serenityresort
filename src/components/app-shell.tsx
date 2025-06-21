@@ -2,14 +2,20 @@
 
 import { usePathname } from 'next/navigation';
 import { AppLayout } from './app-layout';
+import { PublicLayout } from './public-layout';
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const isLoginPage = pathname === '/login';
+  const isDashboardPage = pathname.startsWith('/dashboard');
 
   if (isLoginPage) {
     return <>{children}</>;
   }
 
-  return <AppLayout>{children}</AppLayout>;
+  if (isDashboardPage) {
+    return <AppLayout>{children}</AppLayout>;
+  }
+
+  return <PublicLayout>{children}</PublicLayout>;
 }

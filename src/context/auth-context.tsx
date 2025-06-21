@@ -48,7 +48,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       };
       localStorage.setItem('serenity-user', JSON.stringify(mockUser));
       setUser(mockUser);
-      router.push('/');
+      router.push('/dashboard');
     },
     [router]
   );

@@ -45,16 +45,16 @@ import {
 } from '@/components/ui/sidebar';
 
 const navItems = [
-  { href: '/', label: 'Dashboard', icon: LayoutDashboard },
-  { href: '/rooms', label: 'Room Management', icon: BedDouble },
-  { href: '/resort', label: 'Resort Amenities', icon: Palmtree },
-  { href: '/restaurant', label: 'Restaurant', icon: Utensils },
-  { href: '/inventory', label: 'Inventory', icon: Boxes },
-  { href: '/customers', label: 'Customers', icon: UsersRound },
-  { href: '/users', label: 'User Management', icon: Users },
-  { href: '/welcome-message', label: 'Welcome AI', icon: Sparkles },
-  { href: '/reports', label: 'Reports', icon: FileText },
-  { href: '/integrations', label: 'Integrations', icon: Globe },
+  { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
+  { href: '/dashboard/rooms', label: 'Room Management', icon: BedDouble },
+  { href: '/dashboard/resort', label: 'Resort Amenities', icon: Palmtree },
+  { href: '/dashboard/restaurant', label: 'Restaurant', icon: Utensils },
+  { href: '/dashboard/inventory', label: 'Inventory', icon: Boxes },
+  { href: '/dashboard/customers', label: 'Customers', icon: UsersRound },
+  { href: '/dashboard/users', label: 'User Management', icon: Users },
+  { href: '/dashboard/welcome-message', label: 'Welcome AI', icon: Sparkles },
+  { href: '/dashboard/reports', label: 'Reports', icon: FileText },
+  { href: '/dashboard/integrations', label: 'Integrations', icon: Globe },
 ];
 
 export function AppLayout({ children }: { children: React.ReactNode }) {
