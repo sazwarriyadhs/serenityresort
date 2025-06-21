@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import {
   BedDouble,
+  Boxes,
   FileText,
   LayoutDashboard,
   LogOut,
@@ -47,6 +48,7 @@ const navItems = [
   { href: '/rooms', label: 'Room Management', icon: BedDouble },
   { href: '/resort', label: 'Resort Amenities', icon: Palmtree },
   { href: '/restaurant', label: 'Restaurant', icon: Utensils },
+  { href: '/inventory', label: 'Inventory', icon: Boxes },
   { href: '/customers', label: 'Customers', icon: UsersRound },
   { href: '/users', label: 'User Management', icon: Users },
   { href: '/welcome-message', label: 'Welcome AI', icon: Sparkles },
