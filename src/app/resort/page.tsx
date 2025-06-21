@@ -11,28 +11,28 @@ const amenities = [
     description: { id: 'Bersantai dan rileks di kolam renang infinity kami yang menakjubkan dengan pemandangan laut yang indah. Buka setiap hari dari jam 7 pagi sampai 9 malam.', en: 'Relax and unwind in our stunning infinity pool with panoramic ocean views. Open daily from 7 AM to 9 PM.' },
     icon: Waves,
     image: 'https://placehold.co/600x400.png',
-    dataAiHint: 'resort infinity pool',
+    dataAiHint: 'infinity pool',
   },
   {
     name: { id: 'Pusat Kebugaran', en: 'Fitness Center' },
     description: { id: 'Tetap aktif dengan gym canggih kami, yang dilengkapi dengan mesin kardio, angkat beban, dan matras yoga.', en: 'Stay active with our state-of-the-art gym, featuring cardio machines, free weights, and yoga mats.' },
     icon: Dumbbell,
     image: 'https://placehold.co/600x400.png',
-    dataAiHint: 'fitness center hotel',
+    dataAiHint: 'hotel fitness',
   },
   {
     name: { id: 'Spa Serenity', en: 'Serenity Spa' },
     description: { id: 'Manjakan diri dengan berbagai perawatan mulai dari pijat hingga facial di spa kami yang tenang. Disarankan untuk melakukan reservasi terlebih dahulu.', en: 'Indulge in a range of treatments from massages to facials at our tranquil spa. Advance booking recommended.' },
     icon: Sprout,
     image: 'https://placehold.co/600x400.png',
-    dataAiHint: 'luxury spa interior',
+    dataAiHint: 'spa interior',
   },
   {
     name: { id: 'Akses Pantai Pribadi', en: 'Private Beach Access' },
     description: { id: 'Nikmati akses eksklusif ke pantai pribadi kami yang masih asli, lengkap dengan kursi berjemur dan layanan handuk.', en: 'Enjoy exclusive access to our pristine private beach, complete with sun loungers and towel service.' },
     icon: Palmtree,
     image: 'https://placehold.co/600x400.png',
-    dataAiHint: 'private beach resort',
+    dataAiHint: 'private beach',
   },
 ];
 

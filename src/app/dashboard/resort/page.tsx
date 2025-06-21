@@ -12,7 +12,7 @@ const amenities = [
     status: 'Open',
     icon: Waves,
     image: 'https://placehold.co/600x400.png',
-    dataAiHint: 'swimming pool resort',
+    dataAiHint: 'resort pool',
   },
   {
     name: 'Fitness Center',
@@ -20,7 +20,7 @@ const amenities = [
     status: 'Open',
     icon: Dumbbell,
     image: 'https://placehold.co/600x400.png',
-    dataAiHint: 'fitness center gym',
+    dataAiHint: 'hotel gym',
   },
   {
     name: 'Serenity Spa',
@@ -28,7 +28,7 @@ const amenities = [
     status: 'Open',
     icon: Sprout,
     image: 'https://placehold.co/600x400.png',
-    dataAiHint: 'spa massage',
+    dataAiHint: 'resort spa',
   },
   {
     name: 'Beachfront Access',
@@ -36,7 +36,7 @@ const amenities = [
     status: 'Maintenance',
     icon: Palmtree,
     image: 'https://placehold.co/600x400.png',
-    dataAiHint: 'resort beachfront',
+    dataAiHint: 'beachfront resort',
   },
 ];
 
