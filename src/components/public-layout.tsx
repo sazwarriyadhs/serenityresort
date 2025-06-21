@@ -3,16 +3,27 @@ import Link from 'next/link';
 import { Button } from './ui/button';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
+import { useLocale } from '@/hooks/use-locale';
+import { type Language, type Currency } from '@/context/locale-context';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import { Languages, DollarSign } from 'lucide-react';
 
 const navItems = [
-  { href: '/', label: 'Home' },
-  { href: '/rooms', label: 'Rooms' },
-  { href: '/restaurant', label: 'Restaurant' },
-  { href: '/resort', label: 'Amenities' },
+  { href: '/', label: { id: 'Beranda', en: 'Home' } },
+  { href: '/rooms', label: { id: 'Kamar', en: 'Rooms' } },
+  { href: '/restaurant', label: { id: 'Restoran', en: 'Restaurant' } },
+  { href: '/resort', label: { id: 'Fasilitas', en: 'Amenities' } },
 ];
 
 export function PublicLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const { language, setLanguage, currency, setCurrency, t } = useLocale();
 
   return (
     <div className="flex min-h-screen flex-col bg-background text-foreground">
@@ -29,21 +40,41 @@ export function PublicLayout({ children }: { children: React.ReactNode }) {
           <nav className="hidden md:flex items-center gap-6 text-sm">
             {navItems.map((item) => (
               <Link 
-                key={item.label} 
+                key={item.href} 
                 href={item.href} 
                 className={cn(
                   "transition-colors hover:text-foreground/80",
                   pathname === item.href ? "text-foreground" : "text-foreground/60"
                 )}
               >
-                {item.label}
+                {t(item.label)}
               </Link>
             ))}
           </nav>
           <div className="flex flex-1 items-center justify-end gap-2">
-            <Button>Book Now</Button>
+             <div className="flex items-center gap-1">
+                <Select value={language} onValueChange={(value) => setLanguage(value as Language)}>
+                    <SelectTrigger className="w-auto gap-2 border-none shadow-none bg-transparent focus:ring-0 focus:ring-offset-0">
+                        <Languages className="h-5 w-5" />
+                    </SelectTrigger>
+                    <SelectContent>
+                    <SelectItem value="id">Bahasa Indonesia</SelectItem>
+                    <SelectItem value="en">English</SelectItem>
+                    </SelectContent>
+                </Select>
+                <Select value={currency} onValueChange={(value) => setCurrency(value as Currency)}>
+                    <SelectTrigger className="w-auto gap-2 border-none shadow-none bg-transparent focus:ring-0 focus:ring-offset-0">
+                        <DollarSign className="h-5 w-5" />
+                    </SelectTrigger>
+                    <SelectContent>
+                    <SelectItem value="idr">IDR</SelectItem>
+                    <SelectItem value="usd">USD</SelectItem>
+                    </SelectContent>
+                </Select>
+            </div>
+            <Button asChild><Link href="#">{t({ id: 'Pesan Sekarang', en: 'Book Now' })}</Link></Button>
             <Button variant="outline" asChild>
-                <Link href="/login">Admin Login</Link>
+                <Link href="/login">{t({ id: 'Login Admin', en: 'Admin Login' })}</Link>
             </Button>
           </div>
         </div>
@@ -52,7 +83,7 @@ export function PublicLayout({ children }: { children: React.ReactNode }) {
       <footer className="py-6 md:px-8 md:py-0 border-t">
         <div className="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row">
             <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
-                © {new Date().getFullYear()} Serenity. All rights reserved.
+                © {new Date().getFullYear()} Serenity. {t({ id: 'Hak cipta dilindungi undang-undang.', en: 'All rights reserved.' })}
             </p>
         </div>
       </footer>

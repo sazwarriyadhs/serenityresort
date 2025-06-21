@@ -3,6 +3,7 @@
 import { usePathname } from 'next/navigation';
 import { AppLayout } from './app-layout';
 import { PublicLayout } from './public-layout';
+import { LocaleProvider } from '@/context/locale-context';
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -17,5 +18,9 @@ export function AppShell({ children }: { children: React.ReactNode }) {
     return <AppLayout>{children}</AppLayout>;
   }
 
-  return <PublicLayout>{children}</PublicLayout>;
+  return (
+    <LocaleProvider>
+      <PublicLayout>{children}</PublicLayout>
+    </LocaleProvider>
+  );
 }

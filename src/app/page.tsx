@@ -4,8 +4,11 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { BedDouble, Utensils, Sprout, Star } from 'lucide-react';
+import { useLocale } from '@/hooks/use-locale';
 
 export default function HomePage() {
+  const { t } = useLocale();
+  
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
@@ -20,10 +23,10 @@ export default function HomePage() {
         />
         <div className="absolute inset-0 bg-black/50 -z-10" />
         <div className="container z-10">
-          <h1 className="text-5xl md:text-7xl font-headline font-bold">Experience Tranquility</h1>
-          <p className="mt-4 text-lg md:text-xl max-w-2xl mx-auto">Find your sanctuary at Serenity, where luxury meets peace.</p>
+          <h1 className="text-5xl md:text-7xl font-headline font-bold">{t({id: "Rasakan Ketenangan", en: "Experience Tranquility"})}</h1>
+          <p className="mt-4 text-lg md:text-xl max-w-2xl mx-auto">{t({id: "Temukan suaka Anda di Serenity, tempat kemewahan bertemu kedamaian.", en: "Find your sanctuary at Serenity, where luxury meets peace."})}</p>
           <Button size="lg" className="mt-8" asChild>
-            <Link href="/rooms">Explore Our Rooms</Link>
+            <Link href="/rooms">{t({id: "Jelajahi Kamar Kami", en: "Explore Our Rooms"})}</Link>
           </Button>
         </div>
       </section>
@@ -31,9 +34,9 @@ export default function HomePage() {
       {/* About Section */}
       <section className="py-24 bg-card">
         <div className="container text-center">
-            <h2 className="text-4xl font-headline text-primary">A Haven of Peace and Luxury</h2>
+            <h2 className="text-4xl font-headline text-primary">{t({id: "Surga Kedamaian dan Kemewahan", en: "A Haven of Peace and Luxury"})}</h2>
             <p className="mt-4 max-w-3xl mx-auto text-muted-foreground">
-                Nestled in a secluded paradise, Serenity offers an unparalleled experience of comfort and elegance. Our commitment is to provide a memorable stay, blending world-class hospitality with the natural beauty of our surroundings.
+                {t({id: "Terletak di surga terpencil, Serenity menawarkan pengalaman kenyamanan dan keanggunan yang tak tertandingi. Komitmen kami adalah untuk memberikan masa inap yang tak terlupakan, memadukan perhotelan kelas dunia dengan keindahan alam sekitar kami.", en: "Nestled in a secluded paradise, Serenity offers an unparalleled experience of comfort and elegance. Our commitment is to provide a memorable stay, blending world-class hospitality with the natural beauty of our surroundings."})}
             </p>
         </div>
       </section>
@@ -45,31 +48,31 @@ export default function HomePage() {
                 <Card className="hover:shadow-lg transition-shadow">
                     <CardHeader>
                         <BedDouble className="h-12 w-12 mx-auto text-primary"/>
-                        <CardTitle className="font-headline mt-4">Exquisite Rooms</CardTitle>
+                        <CardTitle className="font-headline mt-4">{t({id: "Kamar-kamar Indah", en: "Exquisite Rooms"})}</CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <p className="text-muted-foreground">Elegantly designed rooms and suites with breathtaking views, ensuring a restful and rejuvenating stay.</p>
-                        <Button variant="link" asChild className="mt-4"><Link href="/rooms">View Rooms →</Link></Button>
+                        <p className="text-muted-foreground">{t({id: "Kamar dan suite yang dirancang dengan elegan dengan pemandangan menakjubkan, memastikan istirahat yang menenangkan dan meremajakan.", en: "Elegantly designed rooms and suites with breathtaking views, ensuring a restful and rejuvenating stay."})}</p>
+                        <Button variant="link" asChild className="mt-4"><Link href="/rooms">{t({id: "Lihat Kamar", en: "View Rooms"})} →</Link></Button>
                     </CardContent>
                 </Card>
                  <Card className="hover:shadow-lg transition-shadow">
                     <CardHeader>
                         <Utensils className="h-12 w-12 mx-auto text-primary"/>
-                        <CardTitle className="font-headline mt-4">Gourmet Dining</CardTitle>
+                        <CardTitle className="font-headline mt-4">{t({id: "Santapan Gourmet", en: "Gourmet Dining"})}</CardTitle>
                     </CardHeader>
                     <CardContent>
-                         <p className="text-muted-foreground">Savor culinary masterpieces at our signature restaurant, featuring fresh, locally-sourced ingredients.</p>
-                        <Button variant="link" asChild className="mt-4"><Link href="/restaurant">Explore Menu →</Link></Button>
+                         <p className="text-muted-foreground">{t({id: "Nikmati mahakarya kuliner di restoran khas kami, yang menyajikan bahan-bahan segar dari sumber lokal.", en: "Savor culinary masterpieces at our signature restaurant, featuring fresh, locally-sourced ingredients."})}</p>
+                        <Button variant="link" asChild className="mt-4"><Link href="/restaurant">{t({id: "Jelajahi Menu", en: "Explore Menu"})} →</Link></Button>
                     </CardContent>
                 </Card>
                  <Card className="hover:shadow-lg transition-shadow">
                     <CardHeader>
                         <Sprout className="h-12 w-12 mx-auto text-primary"/>
-                        <CardTitle className="font-headline mt-4">World-Class Amenities</CardTitle>
+                        <CardTitle className="font-headline mt-4">{t({id: "Fasilitas Kelas Dunia", en: "World-Class Amenities"})}</CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <p className="text-muted-foreground">Indulge in our spa, stay active at the fitness center, or relax by our pristine, private beach.</p>
-                        <Button variant="link" asChild className="mt-4"><Link href="/resort">Discover More →</Link></Button>
+                        <p className="text-muted-foreground">{t({id: "Manjakan diri di spa kami, tetap aktif di pusat kebugaran, atau bersantai di pantai pribadi kami yang masih asli.", en: "Indulge in our spa, stay active at the fitness center, or relax by our pristine, private beach."})}</p>
+                        <Button variant="link" asChild className="mt-4"><Link href="/resort">{t({id: "Temukan Lebih Banyak", en: "Discover More"})} →</Link></Button>
                     </CardContent>
                 </Card>
             </div>
@@ -79,14 +82,14 @@ export default function HomePage() {
        {/* Testimonials Section */}
       <section className="py-24 bg-card">
         <div className="container">
-          <h2 className="text-4xl font-headline text-center text-primary mb-12">What Our Guests Say</h2>
+          <h2 className="text-4xl font-headline text-center text-primary mb-12">{t({id: "Apa Kata Tamu Kami", en: "What Our Guests Say"})}</h2>
           <div className="grid lg:grid-cols-3 gap-8">
             <Card>
               <CardContent className="pt-6">
                 <div className="flex mb-2">
                     {[...Array(5)].map((_,i) => <Star key={i} className="text-primary fill-primary"/>)}
                 </div>
-                <blockquote className="italic text-foreground">"An unforgettable escape! The attention to detail and the staff's warmth made our stay perfect. We're already planning our return."</blockquote>
+                <blockquote className="italic text-foreground">{t({id: "Sebuah pelarian yang tak terlupakan! Perhatian terhadap detail dan kehangatan staf membuat kami tinggal dengan sempurna. Kami sudah merencanakan untuk kembali.", en: "An unforgettable escape! The attention to detail and the staff's warmth made our stay perfect. We're already planning our return."})}</blockquote>
                 <p className="font-semibold mt-4">— The Johnson Family</p>
               </CardContent>
             </Card>
@@ -95,7 +98,7 @@ export default function HomePage() {
                 <div className="flex mb-2">
                     {[...Array(5)].map((_,i) => <Star key={i} className="text-primary fill-primary"/>)}
                 </div>
-                <blockquote className="italic text-foreground">"The restaurant is a culinary gem. Every meal was a delight. Truly a five-star dining experience with a view to match."</blockquote>
+                <blockquote className="italic text-foreground">{t({id: "Restorannya adalah permata kuliner. Setiap hidangan sangat menyenangkan. Benar-benar pengalaman bersantap bintang lima dengan pemandangan yang serasi.", en: "The restaurant is a culinary gem. Every meal was a delight. Truly a five-star dining experience with a view to match."})}</blockquote>
                 <p className="font-semibold mt-4">— Michael Chen</p>
               </CardContent>
             </Card>
@@ -104,7 +107,7 @@ export default function HomePage() {
                 <div className="flex mb-2">
                     {[...Array(5)].map((_,i) => <Star key={i} className="text-primary fill-primary"/>)}
                 </div>
-                <blockquote className="italic text-foreground">"I've never felt so relaxed. The spa is world-class, and the beachfront is pristine. Serenity is the perfect name for this place."</blockquote>
+                <blockquote className="italic text-foreground">{t({id: "Saya belum pernah merasa begitu santai. Spanya berkelas dunia, dan pantainya masih asli. Serenity adalah nama yang sempurna untuk tempat ini.", en: "I've never felt so relaxed. The spa is world-class, and the beachfront is pristine. Serenity is the perfect name for this place."})}</blockquote>
                 <p className="font-semibold mt-4">— Dr. Emily Carter</p>
               </CardContent>
             </Card>
@@ -116,7 +119,7 @@ export default function HomePage() {
       <section className="py-24">
         <div className="container">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-headline text-primary">Our Location</h2>
+            <h2 className="text-4xl font-headline text-primary">{t({id: "Lokasi Kami", en: "Our Location"})}</h2>
             <p className="mt-4 max-w-3xl mx-auto text-muted-foreground">
               Jl. Bukit Pelangi, Kabupaten Bogor, Jawa Barat
             </p>
