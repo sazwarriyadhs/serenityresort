@@ -10,8 +10,8 @@ const amenities = [
     name: { id: 'Kolam Renang Infinity', en: 'Infinity Pool' },
     description: { id: 'Bersantai dan rileks di kolam renang infinity kami yang menakjubkan dengan pemandangan laut yang indah. Buka setiap hari dari jam 7 pagi sampai 9 malam.', en: 'Relax and unwind in our stunning infinity pool with panoramic ocean views. Open daily from 7 AM to 9 PM.' },
     icon: Waves,
-    image: 'https://placehold.co/600x400.png',
-    dataAiHint: 'infinity pool',
+    image: '__media_url_0__',
+    dataAiHint: 'resort pool',
   },
   {
     name: { id: 'Pusat Kebugaran', en: 'Fitness Center' },
