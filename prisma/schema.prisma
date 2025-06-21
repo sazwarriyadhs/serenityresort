@@ -1,126 +1,74 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-datasource db {
-  provider = "postgresql" // or "mysql", "sqlite", "sqlserver", "mongodb"
-  url      = env("DATABASE_URL")
-}
-
 generator client {
   provider = "prisma-client-js"
 }
 
-// User model for staff and admin access
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
 model User {
-  id        Int      @id @default(autoincrement())
+  id        String   @id @default(cuid())
   email     String   @unique
-  name      String
-  role      UserRole
+  name      String?
+  password  String
+  role      String   @default("STAFF") // Replaced enum Role
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
-enum UserRole {
-  ADMINISTRATOR
-  MANAGER
-  STAFF
-}
-
-// Customer model for guest information
 model Customer {
-  id        Int       @id @default(autoincrement())
-  email     String    @unique
-  name      String
-  phone     String
-  bookings  Booking[]
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
+  id             String    @id @default(cuid())
+  email          String    @unique
+  name           String
+  phone          String?
+  lastBooking    DateTime?
+  guestProfile   GuestProfile?
+  bookings       Booking[]
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
 }
 
-// Room model for hotel rooms
+model GuestProfile {
+  id                  String   @id @default(cuid())
+  customerId          String   @unique
+  customer            Customer @relation(fields: [customerId], references: [id])
+  preferences         String?
+  previousStayDetails String?
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+}
+
 model Room {
-  id         Int        @id @default(autoincrement())
-  roomNumber String     @unique
-  type       RoomType
-  status     RoomStatus
-  price      Float
-  bookings   Booking[]
-  createdAt  DateTime   @default(now())
-  updatedAt  DateTime   @updatedAt
-}
-
-enum RoomType {
-  SINGLE
-  DOUBLE
-  SUITE
-}
-
-enum RoomStatus {
-  AVAILABLE
-  OCCUPIED
-  CLEANING
-  MAINTENANCE
-}
-
-// Booking model to link customers and rooms
-model Booking {
-  id           Int           @id @default(autoincrement())
-  customer     Customer      @relation(fields: [customerId], references: [id])
-  customerId   Int
-  room         Room          @relation(fields: [roomId], references: [id])
-  roomId       Int
-  checkInDate  DateTime
-  checkOutDate DateTime
-  status       BookingStatus
-  totalPrice   Float
-  createdAt    DateTime      @default(now())
-  updatedAt    DateTime      @updatedAt
-}
-
-enum BookingStatus {
-  UPCOMING
-  CHECKED_IN
-  CHECKED_OUT
-  CANCELLED
-}
-
-// Amenity model for resort facilities
-model Amenity {
-  id          Int           @id @default(autoincrement())
-  name        String        @unique
-  description String
-  status      AmenityStatus
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
-}
-
-enum AmenityStatus {
-  OPEN
-  MAINTENANCE
-}
-
-// MenuItem model for restaurant menu
-model MenuItem {
-  id          Int          @id @default(autoincrement())
-  name        String
-  description String
-  category    MenuCategory
+  id          String   @id @default(cuid())
+  roomNumber  String   @unique
+  type        String   // Replaced enum RoomType
+  status      String   @default("AVAILABLE") // Replaced enum RoomStatus
   price       Float
-  available   Boolean      @default(true)
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
+  bookings    Booking[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
-enum MenuCategory {
-  APPETIZER
-  MAIN_COURSE
-  DESSERT
-  BEVERAGE
+model Booking {
+  id          String   @id @default(cuid())
+  customerId  String
+  customer    Customer @relation(fields: [customerId], references: [id])
+  roomId      String
+  room        Room     @relation(fields: [roomId], references: [id])
+  checkIn     DateTime
+  checkOut    DateTime
+  status      String   @default("UPCOMING") // Replaced enum BookingStatus
+  totalCost   Float
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
-// InventoryItem model for hotel supplies
 model InventoryItem {
-  id           Int      @id @default(autoincrement())
+  id           String   @id @default(cuid())
   name         String
   category     String
   quantity     Int
@@ -129,12 +77,12 @@ model InventoryItem {
   updatedAt    DateTime @updatedAt
 }
 
-// Integration model for 3rd party channels
-model Integration {
-  id          String   @id // e.g. "bookingcom"
-  name        String   @unique
-  description String
-  connected   Boolean  @default(false)
+model MenuItem {
+  id          String   @id @default(cuid())
+  name        String
+  category    String
+  price       Float
+  available   Boolean  @default(true)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
