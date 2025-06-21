@@ -19,8 +19,8 @@ const amenities = [
     description: 'State-of-the-art gym equipment.',
     status: 'Open',
     icon: Dumbbell,
-    image: 'https://placehold.co/600x400.png',
-    dataAiHint: 'hotel gym',
+    image: '__media_url_0__',
+    dataAiHint: 'fitness center',
   },
   {
     name: 'Serenity Spa',

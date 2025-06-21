@@ -17,8 +17,8 @@ const amenities = [
     name: { id: 'Pusat Kebugaran', en: 'Fitness Center' },
     description: { id: 'Tetap aktif dengan gym canggih kami, yang dilengkapi dengan mesin kardio, angkat beban, dan matras yoga.', en: 'Stay active with our state-of-the-art gym, featuring cardio machines, free weights, and yoga mats.' },
     icon: Dumbbell,
-    image: 'https://placehold.co/600x400.png',
-    dataAiHint: 'hotel fitness',
+    image: '__media_url_0__',
+    dataAiHint: 'fitness center',
   },
   {
     name: { id: 'Spa Serenity', en: 'Serenity Spa' },
