@@ -15,13 +15,20 @@ type Room = {
   price: number;
 };
 
-const initialRooms: Room[] = [
-  { id: 'R101', roomNumber: '101', type: 'Single', status: 'Available', price: 150 },
-  { id: 'R102', roomNumber: '102', type: 'Double', status: 'Occupied', price: 220 },
-  { id: 'R201', roomNumber: '201', type: 'Suite', status: 'Available', price: 400 },
-  { id: 'R202', roomNumber: '202', type: 'Double', status: 'Cleaning', price: 220 },
-  { id: 'R301', roomNumber: '301', type: 'Single', status: 'Maintenance', price: 150 },
-];
+const roomTypesList = ['Single', 'Double', 'Suite'] as const;
+const roomStatuses = ['Available', 'Occupied', 'Cleaning', 'Maintenance'] as const;
+
+const initialRooms: Room[] = Array.from({ length: 100 }, (_, i) => {
+    const floor = Math.floor(i / 20) + 1;
+    const roomNum = floor * 100 + (i % 20) + 1;
+    return {
+        id: `R${roomNum}`,
+        roomNumber: `${roomNum}`,
+        type: roomTypesList[i % roomTypesList.length],
+        status: roomStatuses[i % roomStatuses.length],
+        price: 150 + Math.floor(Math.random() * (i % 3 === 0 ? 250 : 70))
+    };
+});
 
 export default function RoomManagementPage() {
   const [rooms, setRooms] = useState<Room[]>(initialRooms);

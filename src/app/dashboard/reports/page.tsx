@@ -5,14 +5,24 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Download } from 'lucide-react';
 
-const checkInData = [
-  { id: 'BK001', guestName: 'Alice Johnson', checkInDate: '2024-07-20', room: '101', status: 'Checked In' },
-  { id: 'BK002', guestName: 'Robert Smith', checkInDate: '2024-07-20', room: '205', status: 'Checked In' },
-  { id: 'BK003', guestName: 'Maria Garcia', checkInDate: '2024-07-19', room: '312', status: 'Checked Out' },
-  { id: 'BK004', guestName: 'James Williams', checkInDate: '2024-07-21', room: '102', status: 'Upcoming' },
-  { id: 'BK005', guestName: 'Patricia Brown', checkInDate: '2024-07-18', room: '401', status: 'Checked Out' },
-  { id: 'BK006', guestName: 'John Davis', checkInDate: '2024-07-22', room: '208', status: 'Upcoming' },
-];
+const firstNames = ["James", "Mary", "John", "Patricia", "Robert", "Jennifer", "Michael", "Linda", "William", "Elizabeth"];
+const lastNames = ["Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis", "Rodriguez", "Martinez"];
+const reportStatuses = ['Checked In', 'Checked Out', 'Upcoming'] as const;
+
+const checkInData = Array.from({ length: 100 }, (_, i) => {
+    const guestName = `${firstNames[Math.floor(Math.random() * firstNames.length)]} ${lastNames[Math.floor(Math.random() * lastNames.length)]}`;
+    const month = Math.floor(Math.random() * 12) + 1;
+    const day = Math.floor(Math.random() * 28) + 1;
+    const floor = Math.floor(Math.random() * 5) + 1;
+    const roomNumOnFloor = Math.floor(Math.random() * 20) + 1;
+    return {
+        id: `BK${String(i + 1).padStart(3, '0')}`,
+        guestName: guestName,
+        checkInDate: `2024-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`,
+        room: `${floor * 100 + roomNumOnFloor}`,
+        status: reportStatuses[i % reportStatuses.length]
+    };
+});
 
 export default function ReportsPage() {
   const handleDownload = () => {

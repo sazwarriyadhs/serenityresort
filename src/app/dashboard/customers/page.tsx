@@ -35,11 +35,22 @@ const customerSchema = z.object({
   lastBooking: z.string().optional(),
 });
 
-const initialCustomers: Customer[] = [
-  { id: '1', name: 'John Doe', email: 'john.doe@example.com', phone: '123-456-7890', lastBooking: '2024-07-15' },
-  { id: '2', name: 'Jane Smith', email: 'jane.smith@example.com', phone: '234-567-8901', lastBooking: '2024-06-20' },
-  { id: '3', name: 'Sam Wilson', email: 'sam.wilson@example.com', phone: '345-678-9012', lastBooking: '2024-07-22' },
-];
+const firstNames = ["James", "Mary", "John", "Patricia", "Robert", "Jennifer", "Michael", "Linda", "William", "Elizabeth"];
+const lastNames = ["Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis", "Rodriguez", "Martinez"];
+const initialCustomers: Customer[] = Array.from({ length: 100 }, (_, i) => {
+    const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
+    const lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
+    const month = Math.floor(Math.random() * 12) + 1;
+    const day = Math.floor(Math.random() * 28) + 1;
+    return {
+        id: `${i + 1}`,
+        name: `${firstName} ${lastName}`,
+        email: `${firstName.toLowerCase()}.${lastName.toLowerCase()}${i + 1}@example.com`,
+        phone: `555-01${String(i + 1).padStart(2, '0')}`,
+        lastBooking: `2024-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`
+    };
+});
+
 
 export default function CustomersPage() {
   const [customers, setCustomers] = useState<Customer[]>(initialCustomers);

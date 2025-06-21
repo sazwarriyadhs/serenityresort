@@ -35,14 +35,19 @@ const inventorySchema = z.object({
   reorderLevel: z.coerce.number().min(0, { message: 'Reorder level cannot be negative.' }),
 });
 
-const initialInventory: InventoryItem[] = [
-  { id: '1', name: 'Linen Sheets', category: 'Room Supplies', quantity: 100, reorderLevel: 20 },
-  { id: '2', name: 'Shampoo Bottles', category: 'Amenities', quantity: 50, reorderLevel: 50 },
-  { id: '3', name: 'Coffee Pods', category: 'Amenities', quantity: 200, reorderLevel: 40 },
-  { id: '4', name: 'Fresh Salmon', category: 'Kitchen', quantity: 15, reorderLevel: 10 },
-  { id: '5', name: 'Light Bulbs', category: 'Maintenance', quantity: 5, reorderLevel: 10 },
-  { id: '6', name: 'Cleaning Solution', category: 'Housekeeping', quantity: 0, reorderLevel: 5 },
-];
+const itemTypes = ["Linen", "Toiletries", "Beverage", "Snack", "Cleaning Supply", "Office Supply", "Kitchenware"];
+const categories = ['Room Supplies', 'Amenities', 'Kitchen', 'Maintenance', 'Housekeeping'];
+const initialInventory: InventoryItem[] = Array.from({ length: 100 }, (_, i) => {
+    const quantity = Math.floor(Math.random() * 250);
+    const reorderLevel = Math.floor(Math.random() * 40) + 10;
+    return {
+        id: `${i + 1}`,
+        name: `${itemTypes[Math.floor(Math.random() * itemTypes.length)]} #${i + 1}`,
+        category: categories[i % categories.length],
+        quantity: quantity,
+        reorderLevel: reorderLevel
+    };
+});
 
 export default function InventoryPage() {
   const [inventory, setInventory] = useState<InventoryItem[]>(initialInventory);

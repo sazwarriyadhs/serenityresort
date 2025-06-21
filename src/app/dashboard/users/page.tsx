@@ -41,11 +41,20 @@ const userSchema = z.object({
   role: z.enum(['Administrator', 'Manager', 'Staff']),
 });
 
-const initialUsers: User[] = [
-  { id: '1', name: 'Admin User', email: 'admin@serenity.com', role: 'Administrator' },
-  { id: '2', name: 'Manager Mike', email: 'manager.mike@serenity.com', role: 'Manager' },
-  { id: '3', name: 'Staff Sarah', email: 'staff.sarah@serenity.com', role: 'Staff' },
-];
+const firstNames = ["James", "Mary", "John", "Patricia", "Robert", "Jennifer", "Michael", "Linda", "William", "Elizabeth"];
+const lastNames = ["Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis", "Rodriguez", "Martinez"];
+const roles = ['Administrator', 'Manager', 'Staff'];
+const initialUsers: User[] = Array.from({ length: 100 }, (_, i) => {
+    const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
+    const lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
+    return {
+        id: `${i + 1}`,
+        name: `${firstName} ${lastName}`,
+        email: `${firstName.toLowerCase()}.${i + 1}@serenity.com`,
+        role: roles[i % roles.length]
+    };
+});
+
 
 export default function UsersPage() {
   const [users, setUsers] = useState<User[]>(initialUsers);

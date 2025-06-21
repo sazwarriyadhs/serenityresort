@@ -16,14 +16,15 @@ type MenuItem = {
   available: boolean;
 };
 
-const initialMenu: MenuItem[] = [
-  { id: 'M001', name: 'Caesar Salad', category: 'Appetizer', price: 12.50, available: true },
-  { id: 'M002', name: 'Grilled Salmon', category: 'Main Course', price: 28.00, available: true },
-  { id: 'M003', name: 'New York Cheesecake', category: 'Dessert', price: 9.00, available: true },
-  { id: 'M004', name: 'Iced Tea', category: 'Beverage', price: 4.50, available: true },
-  { id: 'M005', name: 'Wagyu Steak', category: 'Main Course', price: 75.00, available: false },
-  { id: 'M006', name: 'French Onion Soup', category: 'Appetizer', price: 14.00, available: true },
-];
+const menuCategoriesList = ['Appetizer', 'Main Course', 'Dessert', 'Beverage'] as const;
+const foodNames = ["Salad", "Steak", "Soup", "Cake", "Pasta", "Fish", "Chicken", "Juice", "Coffee"];
+const initialMenu: MenuItem[] = Array.from({ length: 100 }, (_, i) => ({
+    id: `M${String(i + 1).padStart(3, '0')}`,
+    name: `${foodNames[Math.floor(Math.random() * foodNames.length)]} ${i + 1}`,
+    category: menuCategoriesList[i % menuCategoriesList.length],
+    price: parseFloat((10 + Math.random() * 90).toFixed(2)),
+    available: Math.random() > 0.15
+}));
 
 export default function RestaurantManagementPage() {
   const [menu, setMenu] = useState<MenuItem[]>(initialMenu);
