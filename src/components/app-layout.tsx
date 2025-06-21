@@ -1,0 +1,151 @@
+'use client';
+
+import React, { useEffect } from 'react';
+import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
+import {
+  FileText,
+  LayoutDashboard,
+  LogOut,
+  MoreVertical,
+  PanelLeft,
+  Settings,
+  Sparkles,
+  Users,
+} from 'lucide-react';
+
+import { useAuth } from '@/hooks/use-auth';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Button } from '@/components/ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import {
+  SidebarProvider,
+  Sidebar,
+  SidebarHeader,
+  SidebarContent,
+  SidebarFooter,
+  SidebarMenu,
+  SidebarMenuItem,
+  SidebarMenuButton,
+  SidebarInset,
+  SidebarTrigger,
+} from '@/components/ui/sidebar';
+
+const navItems = [
+  { href: '/', label: 'Dashboard', icon: LayoutDashboard },
+  { href: '/users', label: 'User Management', icon: Users },
+  { href: '/welcome-message', label: 'Welcome AI', icon: Sparkles },
+  { href: '/reports', label: 'Reports', icon: FileText },
+];
+
+export function AppLayout({ children }: { children: React.ReactNode }) {
+  const { user, loading, logout } = useAuth();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  useEffect(() => {
+    if (!loading && !user) {
+      router.push('/login');
+    }
+  }, [user, loading, router]);
+
+  if (loading || !user) {
+    return (
+      <div className="flex h-screen w-full items-center justify-center bg-background">
+        <div className="flex flex-col items-center gap-4">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="animate-spin text-primary"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+          <p className="text-muted-foreground">Loading Serenity...</p>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <SidebarProvider>
+      <Sidebar>
+        <SidebarHeader>
+            <div className="flex items-center gap-2">
+                <div className="p-1.5 rounded-lg bg-primary/20">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" className="h-7 w-7 text-primary"><rect width="256" height="256" fill="none"/><path d="M128,24a104,104,0,0,0,0,208c57.4,0,96.35-30,103.65-83.21a8,8,0,0,0-15.84-2.38C210.3,184.32,174,216,128,216A88,88,0,0,1,128,40a87.41,87.41,0,0,1,59.18,22.54,8,8,0,0,0,11.31-11.32A103.22,103.22,0,0,0,128,24Z"/></svg>
+                </div>
+                <h2 className="text-xl font-bold font-headline text-foreground">Serenity</h2>
+            </div>
+        </SidebarHeader>
+        <SidebarContent>
+          <SidebarMenu>
+            {navItems.map((item) => (
+              <SidebarMenuItem key={item.label}>
+                <Link href={item.href} legacyBehavior passHref>
+                  <SidebarMenuButton
+                    isActive={pathname === item.href}
+                    tooltip={{ children: item.label }}
+                  >
+                    <item.icon />
+                    <span>{item.label}</span>
+                  </SidebarMenuButton>
+                </Link>
+              </SidebarMenuItem>
+            ))}
+          </SidebarMenu>
+        </SidebarContent>
+        <SidebarFooter>
+           <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="w-full justify-start p-2 h-auto">
+                    <div className="flex justify-between items-center w-full">
+                        <div className="flex gap-2 items-center">
+                            <Avatar className="h-8 w-8">
+                                <AvatarImage src={`https://i.pravatar.cc/150?u=${user.email}`} alt={user.name} />
+                                <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
+                            </Avatar>
+                            <div className="text-left">
+                                <p className="text-sm font-medium">{user.name}</p>
+                                <p className="text-xs text-muted-foreground">{user.role}</p>
+                            </div>
+                        </div>
+                        <MoreVertical className="h-4 w-4" />
+                    </div>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-56" align="end" forceMount>
+                <DropdownMenuLabel className="font-normal">
+                  <div className="flex flex-col space-y-1">
+                    <p className="text-sm font-medium leading-none">{user.name}</p>
+                    <p className="text-xs leading-none text-muted-foreground">
+                      {user.email}
+                    </p>
+                  </div>
+                </DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>
+                  <Settings className="mr-2 h-4 w-4" />
+                  <span>Settings</span>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onClick={logout}>
+                  <LogOut className="mr-2 h-4 w-4" />
+                  <span>Log out</span>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+        </SidebarFooter>
+      </Sidebar>
+      <SidebarInset>
+        <header className="flex h-14 items-center gap-4 border-b bg-background/50 backdrop-blur-sm px-6 sticky top-0 z-30">
+            <SidebarTrigger className="md:hidden"/>
+            <div className="flex-1">
+                {/* Optional Header Content */}
+            </div>
+        </header>
+        <main className="flex-1 p-6">{children}</main>
+      </SidebarInset>
+    </SidebarProvider>
+  );
+}
